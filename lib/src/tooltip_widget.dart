@@ -247,9 +247,7 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
             ? widget.contentWidth == null
                 ? _getLeft()
                 : _getSpace()
-            : widget.contentWidth == null
-                ? _getLeft()
-                : null,
+            : null,
         top: widget.contentWidth == null ? contentY : contentY - 10,
         right: widget.textDirection == TextDirection.rtl
             ? widget.contentWidth == null
@@ -317,11 +315,11 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                         child: GestureDetector(
                           onTap: widget.onTooltipTap,
                           child: Container(
-                            width: _getTooltipWidth(),
                             padding: widget.contentPadding,
                             color: widget.tooltipColor,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 Column(
                                   crossAxisAlignment: widget.title != null
