@@ -35,7 +35,7 @@ import 'tooltip_widget.dart';
 class Showcase extends StatefulWidget {
   @override
   final GlobalKey key;
-
+  final TextDirection textDirection;
   final Widget child;
   final String? title;
   final String? description;
@@ -92,6 +92,7 @@ class Showcase extends StatefulWidget {
     this.overlayPadding = EdgeInsets.zero,
     this.blurValue,
     this.radius,
+    this.textDirection = TextDirection.ltr,
   })  : container = null,
         assert(overlayOpacity >= 0.0 && overlayOpacity <= 1.0,
             "overlay opacity must be between 0 and 1."),
@@ -129,6 +130,7 @@ class Showcase extends StatefulWidget {
     this.contentPadding = const EdgeInsets.symmetric(vertical: 8),
     this.overlayPadding = EdgeInsets.zero,
     this.blurValue,
+    this.textDirection = TextDirection.ltr,
   })  : showArrow = false,
         onToolTipClick = null,
         assert(overlayOpacity >= 0.0 && overlayOpacity <= 1.0,
@@ -292,6 +294,7 @@ class _ShowcaseState extends State<Showcase> {
                 contentPadding: widget.contentPadding,
                 disableAnimation: widget.disableAnimation,
                 animationDuration: widget.animationDuration,
+                textDirection: widget.textDirection,
               ),
             ],
           )

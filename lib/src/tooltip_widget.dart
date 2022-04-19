@@ -45,6 +45,7 @@ class ToolTipWidget extends StatefulWidget {
   final EdgeInsets? contentPadding;
   final Duration animationDuration;
   final bool disableAnimation;
+  final TextDirection textDirection;
 
   ToolTipWidget({
     required this.position,
@@ -62,6 +63,7 @@ class ToolTipWidget extends StatefulWidget {
     required this.contentWidth,
     required this.onTooltipTap,
     required this.animationDuration,
+    required this.textDirection,
     this.contentPadding = const EdgeInsets.symmetric(vertical: 8),
     required this.disableAnimation,
   });
@@ -241,9 +243,21 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
 
     if (widget.container == null) {
       return Positioned(
-        left: widget.contentWidth == null ? _getLeft() : _getSpace(),
+        left: widget.textDirection == TextDirection.ltr
+            ? widget.contentWidth == null
+                ? _getLeft()
+                : _getSpace()
+            : widget.contentWidth == null
+                ? _getLeft()
+                : null,
         top: widget.contentWidth == null ? contentY : contentY - 10,
-        right: widget.contentWidth == null ? _getRight() : null,
+        right: widget.textDirection == TextDirection.rtl
+            ? widget.contentWidth == null
+                ? _getRight()
+                : _getSpace()
+            : widget.contentWidth == null
+                ? _getRight()
+                : null,
         child: FractionalTranslation(
           translation: Offset(0.0, contentFractionalOffset as double),
           child: SlideTransition(
