@@ -122,8 +122,8 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
             widget.contentPadding!.right +
             widget.contentPadding!.left;
     var maxTextWidth = max(titleLength, descriptionLength);
-    if (maxTextWidth > widget.screenSize!.width - 20) {
-      return widget.screenSize!.width - 20;
+    if (maxTextWidth > widget.contentWidth! - 20) {
+      return widget.contentWidth! - 20;
     } else {
       return maxTextWidth + 15;
     }
@@ -315,11 +315,11 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                         child: GestureDetector(
                           onTap: widget.onTooltipTap,
                           child: Container(
+                            width: _getTooltipWidth(),
                             padding: widget.contentPadding,
                             color: widget.tooltipColor,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 Column(
                                   crossAxisAlignment: widget.title != null
