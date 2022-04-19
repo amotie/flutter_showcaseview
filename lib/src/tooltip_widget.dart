@@ -241,9 +241,8 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
 
     if (widget.container == null) {
       return Positioned(
-        top: contentY,
-        left: _getLeft(),
-        right: _getRight(),
+        left: _getSpace(),
+            top: contentY - 10,
         child: FractionalTranslation(
           translation: Offset(0.0, contentFractionalOffset as double),
           child: SlideTransition(
