@@ -122,10 +122,18 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
             widget.contentPadding!.right +
             widget.contentPadding!.left;
     var maxTextWidth = max(titleLength, descriptionLength);
-    if (maxTextWidth > widget.contentWidth! - 20) {
-      return widget.contentWidth! - 20;
+    if (widget.contentWidth != null) {
+      if (maxTextWidth > widget.contentWidth! - 20) {
+        return widget.contentWidth! - 20;
+      } else {
+        return maxTextWidth + 15;
+      }
+    }else{
+       if (maxTextWidth > widget.screenSize!.width - 20) {
+      return widget.screenSize!.width - 20;
     } else {
       return maxTextWidth + 15;
+    }
     }
   }
 
